@@ -18,5 +18,5 @@ const formData = new FormData(event.currentTarget);
        
  });
     
-    
+    event.target.reset(); 
 };
