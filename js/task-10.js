@@ -1,30 +1,46 @@
+
+const boxes = document.querySelector(`#boxes`);
+const buttonCreate = document.querySelector("button[data-create]");
+const buttonDestroy = document.querySelector("button[data-destroy]");
+const input = document.querySelector(`input`);
+
+
 function getRandomHexColor() {
-  return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+  return `#${Math.floor(Math.random() * 16777215)
+    .toString(16)
+    .padStart(6, 0)}`;
 }
-// дві кнопки.два лістенери
 
-const inputEl = document.querySelector(`input`);
-const buttonCreate = document.querySelector(`[data-create]`);
-const buttonDesroy = document.querySelector(`[data-destroy]`);
-const divBoxesEl = document.querySelector(`#boxes`);
+// input.addEventListener(`click`, onInputSubmit);
 
-// console.log(inputEl);
-inputEl.addEventListener(`submit`, onInputSubmit);
+// function onInputSubmit() {
+//   const amount = input.valueAsNumber;
+  
+//   // console.log(amount);
+// };
 
-function onInputSubmit() {
-  return input.value;
-   
+buttonCreate.addEventListener(`click`, createBoxes);
+
+const amount = input.valueAsNumber;
+
+function createBoxes(amount) { 
+  
+    for (let i = 1; i <= amount; i++) {
+    const box = document.createElement(`div`);
+    box.style.width = `${30 + 10 * (i - 1)}px`;
+    box.style.height = `${30 + 10 * (i - 1)}px`;
+    box.style.backgroundColor = getRandomHexColor();
+     boxes.appendChild(box);
+        
+  }
+
 };
 
-buttonCreate.addEventListener(`click`, onButtonSubmit);
+buttonDestroy.addEventListener(`click`, destroyBoxes);
 
-function onButtonSubmit() {
-
-
-}
-
-// створити діви,
-// змінити фон та розмір
-//   прикріпити
-
-// видалити кнопкою по функціі
+function destroyBoxes() {
+  while (boxes.firstChild) {
+  boxes.removeChild(boxes.firstChild);
+ }
+};
+  
