@@ -1,16 +1,19 @@
 const input = document.querySelector(`#validation-input`);
+    
+const dataLength = Number(input.getAttribute(`data-length`));
 
-//     input.addEventListener(`focus`, onInputFocus);
-// function onInputFocus() {
-//     console.log("input in focus");
-//     }
-const dataLength = 6;
-
+console.log(dataLength);
 input.addEventListener(`blur`, onValidInput);
 
 function onValidInput() {
-  input.value.length === dataLength
-    ? input.classList.add(`valid`)
-    : input.classList.add(`invalid`);
-
+  if (input.value.length === dataLength) {
+    input.classList.add("valid");
+    input.classList.remove("invalid");
+  } else {
+    input.classList.add("invalid");
+    input.classList.remove("valid");
+    
+  }
+  
 }
+
