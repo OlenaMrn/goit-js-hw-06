@@ -6,13 +6,14 @@ const items = categories.querySelectorAll("li.item");
 
 
 items.forEach((item) => {
-    const headerElem = item.querySelector(`h2`);
-   
-    console.log(`Category: ${headerElem.textContent}`);
+  const headerElem = item.firstElementChild;
 
-    const numberOfElements = item.querySelectorAll(`li`);
-    
-    console.log(`Elements: ${numberOfElements.length}`);
+  console.log(`Category: ${headerElem.textContent}`);
+
+  const element = item.firstElementChild.nextElementSibling;
+  const elementsCount = element.childElementCount;
+
+  console.log(`Elements: ${elementsCount}`);
 });
 
 
