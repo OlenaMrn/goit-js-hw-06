@@ -11,10 +11,16 @@ function onFormSubmit(event) {
     alert("Всі поля повинні бути заповнені");
     return;
   }
-
+  const formDataObject = {};
+  
   formData.forEach((value, name) => {
-    console.log(name, value);
+    formDataObject[name] = value;
   });
+
+  console.log(formDataObject);
 
   event.target.reset();
 }
+
+
+
